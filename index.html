@@ -1,12 +1,38 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Hello, World!</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-      <h1 class="title">Hello World! </h1>
-      
-      <script src="script.js"></script>
-  </body>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Igre</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Dobrodošli na portal za igre!</h1>
+        <p>Izaberi igru i zabavi se.</p>
+    </header>
+
+    <div class="game-list">
+        <div class="game-card" id="memory-game">
+            <h3>Memory Igra</h3>
+            <button class="play-btn" onclick="window.location.href='memory.html'">Igraj</button>
+        </div>
+
+        <div class="game-card" id="tic-tac-toe">
+            <h3>Tic-Tac-Toe</h3>
+            <button class="play-btn" onclick="window.location.href='tic-tac-toe.html'">Igraj</button>
+        </div>
+
+        <div class="game-card" id="css-game">
+            <h3>CSS Igra</h3>
+            <button class="play-btn" onclick="window.location.href='css-game.html'">Igraj</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Online Igre</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
