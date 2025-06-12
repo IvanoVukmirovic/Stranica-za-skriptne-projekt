@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CSS Puzzle Game</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #f7f7f7, #e2e2e2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .game-wrapper {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 60px);
+      grid-template-rows: repeat(5, 60px);
+      gap: 10px;
+    }
+
+    .grid div,
+    .grid button {
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+    }
+
+    .grid div {
+      background-color: #ffffff;
+      border: 2px solid #ddd;
+      color: #333;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .grid div:hover {
+      transform: scale(1.05);
+    }
+
+    .grid button {
+      background-color: #00796b;
+      color: white;
+      cursor: pointer;
+      font-size: 20px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .grid button:hover {
+      background-color: #004d40;
+      transform: scale(1.1);
+    }
+
+    .grid button:focus {
+      outline: none;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #444;
+    }
+    body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .game-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .game-title {
+            color: #45B7D1;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+  </style>
+</head>
+<body onload="input()">
+  <div class="game-wrapper">
+    <h1>Boje Puzzle</h1>
+    <div class="grid" onclick="pobjeda()">
+      <div></div>
+      <div><button onclick="up1()">🔼</button></div>
+      <div><button onclick="up2()">🔼</button></div>
+      <div><button onclick="up3()">🔼</button></div>
+      <div></div>
+
+      <div><button onclick="left1()">◀</button></div>
+      <div id="1">1</div>
+      <div id="2">2</div>
+      <div id="3">3</div>
+      <div><button onclick="right1()">▶</button></div>
+
+      <div><button onclick="left2()">◀</button></div>
+      <div id="4">4</div>
+      <div id="5">5</div>
+      <div id="6">6</div>
+      <div><button onclick="right2()">▶</button></div>
+
+      <div><button onclick="left3()">◀</button></div>
+      <div id="7">7</div>
+      <div id="8">8</div>
+      <div id="9">9</div>
+      <div><button onclick="right3()">▶</button></div>
+
+      <div></div>
+      <div><button onclick="down1()">🔽</button></div>
+      <div><button onclick="down2()">🔽</button></div>
+      <div><button onclick="down3()">🔽</button></div>
+      <div></div>
+    </div>
+  </div>
+
+  <script>
+    function input() {
+      document.getElementById("1").style.background = "green";
+      document.getElementById("2").style.background = "green";
+      document.getElementById("3").style.background = "green";
+      document.getElementById("4").style.background = "blue";
+      document.getElementById("5").style.background = "blue";
+      document.getElementById("6").style.background = "blue";
+      document.getElementById("7").style.background = "red";
+      document.getElementById("8").style.background = "red";
+      document.getElementById("9").style.background = "red";
+    }
+
+    function rotateRow(ids, direction) {
+      const colors = ids.map(id => document.getElementById(id).style.background);
+      const rotated = direction === "right"
+        ? [colors[2], colors[0], colors[1]]
+        : [colors[1], colors[2], colors[0]];
+      ids.forEach((id, i) => {
+        document.getElementById(id).style.background = rotated[i];
+      });
+    }
+
+    function rotateCol(ids, direction) {
+      const colors = ids.map(id => document.getElementById(id).style.background);
+      const rotated = direction === "up"
+        ? [colors[1], colors[2], colors[0]]
+        : [colors[2], colors[0], colors[1]];
+      ids.forEach((id, i) => {
+        document.getElementById(id).style.background = rotated[i];
+      });
+    }
+
+    function right1() { rotateRow(["1", "2", "3"], "right"); }
+    function right2() { rotateRow(["4", "5", "6"], "right"); }
+    function right3() { rotateRow(["7", "8", "9"], "right"); }
+    function left1() { rotateRow(["1", "2", "3"], "left"); }
+    function left2() { rotateRow(["4", "5", "6"], "left"); }
+    function left3() { rotateRow(["7", "8", "9"], "left"); }
+    function up1() { rotateCol(["1", "4", "7"], "up"); }
+    function up2() { rotateCol(["2", "5", "8"], "up"); }
+    function up3() { rotateCol(["3", "6", "9"], "up"); }
+    function down1() { rotateCol(["1", "4", "7"], "down"); }
+    function down2() { rotateCol(["2", "5", "8"], "down"); }
+    function down3() { rotateCol(["3", "6", "9"], "down"); }
+
+    function pobjeda() {
+      const b = id => document.getElementById(b = id).style.background;
+      if (
+        b(1) === b(2) && b(1) === b(3) &&
+        b(4) === b(5) && b(4) === b(6) &&
+        b(7) === b(8) && b(7) === b(9) ||
+        b(1) === b(4) && b(1) === b(7) &&
+        b(2) === b(5) && b(2) === b(8) &&
+        b(3) === b(6) && b(3) === b(9)
+      ) {
+        alert("Pobjeda!");
+      }
+    }
+  </script>
+</body>
+</html>
