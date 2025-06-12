@@ -304,7 +304,7 @@
         }
         
         function getBestMove() {
-            // Try to win
+          
             for (let i = 0; i < 9; i++) {
                 if (board[i] === '') {
                     board[i] = 'O';
@@ -316,7 +316,7 @@
                 }
             }
             
-            // Try to block player
+            
             for (let i = 0; i < 9; i++) {
                 if (board[i] === '') {
                     board[i] = 'X';
@@ -328,19 +328,19 @@
                 }
             }
             
-            // Take center if available
+            
             if (board[4] === '') {
                 return 4;
             }
             
-            // Take corners
+            
             const corners = [0, 2, 6, 8];
             const availableCorners = corners.filter(corner => board[corner] === '');
             if (availableCorners.length > 0) {
                 return availableCorners[Math.floor(Math.random() * availableCorners.length)];
             }
             
-            // Take any available spot
+            
             return getRandomMove();
         }
         

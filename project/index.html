@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameHub - Premium Online Games</title>
-    <link rel="stylesheet" href="../portal-style.css">
+    <link rel="stylesheet" href="portal-style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,102 +12,176 @@
 <body>
     <header class="header">
         <div class="container">
-            <h1 class="logo">🎮 GameHub</h1>
-            <p class="tagline">Premium Online Games Collection</p>
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="logo.png" alt="GameHub Logo" class="logo-image" onerror="this.style.display='none'">
+                    <div class="logo-text">
+                        <h1 class="logo">🎮 GameHub</h1>
+                        <p class="tagline">Premium Online Games Collection</p>
+                    </div>
+                </div>
+                <nav class="nav-menu">
+                    <a href="#games" class="nav-link">Games</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                    <a href="#about" class="nav-link">About</a>
+                </nav>
+            </div>
         </div>
     </header>
 
     <main class="main">
         <div class="container">
-            <section class="games-section">
+            <section class="games-section" id="games">
                 <h2 class="section-title">Choose Your Adventure</h2>
-                <div class="games-grid" id="gamesGrid">
-                    <!-- Games will be populated by JavaScript -->
+                <div class="games-grid">
+                    
+                    <div class="game-card" style="--accent-color: #4ECDC4">
+                        <div class="game-thumbnail">
+                            <img src="memory.png" alt="Memory Game Screenshot" class="game-screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="game-icon" style="display: none;">🎮</div>
+                        </div>
+                        <div class="game-info">
+                            <h3 class="game-title">Memory Game</h3>
+                            <p class="game-description">Test your memory with this classic card matching game</p>
+                            <a href="memory.html" class="play-btn" target="_blank">
+                                <span class="play-icon">▶</span>
+                                Play Now
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="game-card" style="--accent-color: #45B7D1">
+                        <div class="game-thumbnail">
+                            <img src="rps.png" alt="Rock Paper Scissors Screenshot" class="game-screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="game-icon" style="display: none;">🎮</div>
+                        </div>
+                        <div class="game-info">
+                            <h3 class="game-title">Rock Paper Scissors</h3>
+                            <p class="game-description">Classic hand game against the computer</p>
+                            <a href="rock-paper-scissors.html" class="play-btn" target="_blank">
+                                <span class="play-icon">▶</span>
+                                Play Now
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="game-card" style="--accent-color: #96CEB4">
+                        <div class="game-thumbnail">
+                            <img src="kk.png" alt="Tic-Tac-Toe Screenshot" class="game-screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="game-icon" style="display: none;">🎮</div>
+                        </div>
+                        <div class="game-info">
+                            <h3 class="game-title">Tic-Tac-Toe</h3>
+                            <p class="game-description">Strategic Tic-Tac-Toe with tactical mode</p>
+                            <a href="tic-tac-toe.html" class="play-btn" target="_blank">
+                                <span class="play-icon">▶</span>
+                                Play Now
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="game-card" style="--accent-color: #A29BFE">
+                        <div class="game-thumbnail">
+                            <img src="quiz.png" alt="Quiz Game Screenshot" class="game-screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="game-icon" style="display: none;">🎮</div>
+                        </div>
+                        <div class="game-info">
+                            <h3 class="game-title">Quiz Game</h3>
+                            <p class="game-description">Test your knowledge with fun trivia questions</p>
+                            <a href="quiz.html" class="play-btn" target="_blank">
+                                <span class="play-icon">▶</span>
+                                Play Now
+                            </a>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="game-card" style="--accent-color: #FD79A8">
+                        <div class="game-thumbnail">
+                            <img src="rubiks.png" alt="2D Rubik's Cube Screenshot" class="game-screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="game-icon" style="display: none;">🎮</div>
+                        </div>
+                        <div class="game-info">
+                            <h3 class="game-title">2D Rubik's Cube</h3>
+                            <p class="game-description">Solve the colorful 2D Rubik's Cube puzzle</p>
+                            <a href="rubiks-2d.html" class="play-btn" target="_blank">
+                                <span class="play-icon">▶</span>
+                                Play Now
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
             </section>
         </div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" id="contact">
         <div class="container">
-            <p>&copy; 2025 GameHub. All games are free to play!</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="GameHub Logo" class="footer-logo-image" onerror="this.style.display='none'">
+                        <h3>🎮 GameHub</h3>
+                    </div>
+                    <p class="footer-description">Your ultimate destination for premium online games. Play, compete, and have fun!</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <a href="mailto:info@gamehub.com">info@gamehub.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📱</span>
+                            <a href="tel:+1234567890">+1 (234) 567-890</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🌐</span>
+                            <span>www.gamehub.com</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#games">All Games</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 GameHub. All rights reserved. All games are free to play!</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📷</a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script>
-        const games = [
-            
-            {
-                title: "Memory Game",
-                file: "memory.html",
-                description: "Test your memory with this classic card matching game",
-                color: "#4ECDC4"
-            },
-            {
-                title: "Rock Paper Scissors",
-                file: "rock-paper-scissors.html",
-                description: "Classic hand game against the computer",
-                color: "#45B7D1"
-            },
-            {
-                title: "Tic-Tac-Toe",
-                file: "tic-tac-toe.html",
-                description: "Strategic Tic-Tac-Toe with tactical mode",
-                color: "#96CEB4"
-            },
-            
-            
-            {
-                title: "Quiz Game",
-                file: "quiz.html",
-                description: "Test your knowledge with fun trivia questions",
-                color: "#A29BFE"
-            },
-           
-            {
-                title: "CPS Test",
-                file: "cps-test.html",
-                description: "Test your clicking speed - how fast can you click?",
-                color: "#FF7675"
-            },
-            {
-                title: "2D Rubik's Cube",
-                file: "rubiks-2d.html",
-                description: "Solve the colorful 2D Rubik's Cube puzzle",
-                color: "#FD79A8"
-            },
-            
-           
-        ];
-
-        function createGameCard(game) {
-            return `
-                <div class="game-card" style="--accent-color: ${game.color}">
-                    <div class="game-thumbnail">
-                        <div class="game-icon">🎮</div>
-                    </div>
-                    <div class="game-info">
-                        <h3 class="game-title">${game.title}</h3>
-                        <p class="game-description">${game.description}</p>
-                        <button class="play-btn" onclick="playGame('${game.file}')">
-                            <span class="play-icon">▶</span>
-                            Play Now
-                        </button>
-                    </div>
-                </div>
-            `;
-        }
-
-        function playGame(gameFile) {
-            window.open(`games/${gameFile}`, '_blank');
-        }
-
-        function initializeGames() {
-            const gamesGrid = document.getElementById('gamesGrid');
-            gamesGrid.innerHTML = games.map(createGameCard).join('');
-        }
-
-        document.addEventListener('DOMContentLoaded', initializeGames);
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>

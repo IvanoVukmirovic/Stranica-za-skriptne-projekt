@@ -389,7 +389,7 @@
                 if (timeLeft <= 0) {
                     clearInterval(timer);
                     if (selectedAnswer === null) {
-                        selectAnswer(-1); // Auto-select wrong answer
+                        selectAnswer(-1); 
                         setTimeout(() => {
                             document.getElementById('nextBtn').disabled = false;
                         }, 1000);
@@ -411,7 +411,7 @@
             document.getElementById('quizArea').style.display = 'none';
             document.getElementById('resultsArea').style.display = 'block';
             
-            const maxScore = questions.length * 20; // Assuming max 20 points per question
+            const maxScore = questions.length * 20; 
             const percentage = Math.round((score / maxScore) * 100);
             
             document.getElementById('finalScore').textContent = score;
@@ -440,7 +440,7 @@
             startQuiz();
         }
         
-        // Initialize the quiz
+
         startQuiz();
     </script>
 </body>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2D Rubik's Cube</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .game-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .game-title {
+            color: #FD79A8;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .game-instructions {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .puzzle-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 60px);
+            grid-template-rows: repeat(5, 60px);
+            gap: 10px;
+            justify-content: center;
+            margin: 30px auto;
+        }
+        
+        .grid-cell {
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .puzzle-cell {
+            background-color: #ffffff;
+            border: 2px solid #ddd;
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .puzzle-cell:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .control-btn {
+            background: linear-gradient(135deg, #FD79A8, #E84393);
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .control-btn:hover {
+            background: linear-gradient(135deg, #E84393, #D63384);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .control-btn:focus {
+            outline: none;
+        }
+        
+        .game-controls {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .game-control-btn {
+            background: linear-gradient(135deg, #FD79A8, #E84393);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .game-control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .win-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            display: none;
+            z-index: 1000;
+        }
+        
+        .win-message h2 {
+            color: #FD79A8;
+            margin-bottom: 15px;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .winning-animation {
+            animation: pulse 0.6s ease-in-out;
+        }
+        
+        @media (max-width: 480px) {
+            .puzzle-grid {
+                grid-template-columns: repeat(5, 50px);
+                grid-template-rows: repeat(5, 50px);
+                gap: 8px;
+            }
+            
+            .grid-cell {
+                font-size: 14px;
+            }
+            
+            .game-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body onload="initializeGame()">
+    <div class="game-container">
+        <h1 class="game-title">🧩 2D Rubik's Cube</h1>
+        
+        <div class="game-instructions">
+            Use the arrow buttons to rotate rows and columns. Match all colors in rows or columns to win!
+        </div>
+        
+        <div class="puzzle-grid" onclick="checkWin()">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"><button class="control-btn" onclick="rotateUp(1)">🔼</button></div>
+            <div class="grid-cell"><button class="control-btn" onclick="rotateUp(2)">🔼</button></div>
+            <div class="grid-cell"><button class="control-btn" onclick="rotateUp(3)">🔼</button></div>
+            <div class="grid-cell"></div>
+
+            <div class="grid-cell"><button class="control-btn" onclick="rotateLeft(1)">◀</button></div>
+            <div class="grid-cell puzzle-cell" id="cell1">1</div>
+            <div class="grid-cell puzzle-cell" id="cell2">2</div>
+            <div class="grid-cell puzzle-cell" id="cell3">3</div>
+            <div class="grid-cell"><button class="control-btn" onclick="rotateRight(1)">▶</button></div>
+
+            <div class="grid-cell"><button class="control-btn" onclick="rotateLeft(2)">◀</button></div>
+            <div class="grid-cell puzzle-cell" id="cell4">4</div>
+            <div class="grid-cell puzzle-cell" id="cell5">5</div>
+            <div class="grid-cell puzzle-cell" id="cell6">6</div>
+            <div class="grid-cell"><button class="control-btn" onclick="rotateRight(2)">▶</button></div>
+
+            <div class="grid-cell"><button class="control-btn" onclick="rotateLeft(3)">◀</button></div>
+            <div class="grid-cell puzzle-cell" id="cell7">7</div>
+            <div class="grid-cell puzzle-cell" id="cell8">8</div>
+            <div class="grid-cell puzzle-cell" id="cell9">9</div>
+            <div class="grid-cell"><button class="control-btn" onclick="rotateRight(3)">▶</button></div>
+
+            <div class="grid-cell"></div>
+            <div class="grid-cell"><button class="control-btn" onclick="rotateDown(1)">🔽</button></div>
+            <div class="grid-cell"><button class="control-btn" onclick="rotateDown(2)">🔽</button></div>
+            <div class="grid-cell"><button class="control-btn" onclick="rotateDown(3)">🔽</button></div>
+            <div class="grid-cell"></div>
+        </div>
+        
+        <div class="game-controls">
+            <button class="game-control-btn" onclick="shufflePuzzle()">Shuffle</button>
+            <button class="game-control-btn" onclick="resetPuzzle()">Reset</button>
+            <button class="game-control-btn" onclick="window.close()">Back to Games</button>
+        </div>
+        
+        <div class="win-message" id="winMessage">
+            <h2>🎉 Congratulations!</h2>
+            <p>You solved the puzzle!</p>
+            <button class="game-control-btn" onclick="shufflePuzzle()">Play Again</button>
+        </div>
+    </div>
+
+    <script>
+        const colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEAA7', '#DDA0DD', '#98D8C8', '#F7DC6F', '#BB8FCE'];
+        
+        function initializeGame() {
+            resetPuzzle();
+        }
+        
+        function resetPuzzle() {
+            
+            document.getElementById("cell1").style.background = colors[0];
+            document.getElementById("cell2").style.background = colors[0];
+            document.getElementById("cell3").style.background = colors[0];
+            document.getElementById("cell4").style.background = colors[1];
+            document.getElementById("cell5").style.background = colors[1];
+            document.getElementById("cell6").style.background = colors[1];
+            document.getElementById("cell7").style.background = colors[2];
+            document.getElementById("cell8").style.background = colors[2];
+            document.getElementById("cell9").style.background = colors[2];
+            
+            document.getElementById('winMessage').style.display = 'none';
+        }
+        
+        function shufflePuzzle() {
+            
+            for (let i = 1; i <= 9; i++) {
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                document.getElementById(`cell${i}`).style.background = randomColor;
+            }
+            document.getElementById('winMessage').style.display = 'none';
+        }
+        
+        function rotateRow(cellIds, direction) {
+            const cellColors = cellIds.map(id => document.getElementById(`cell${id}`).style.background);
+            const rotated = direction === "right"
+                ? [cellColors[2], cellColors[0], cellColors[1]]
+                : [cellColors[1], cellColors[2], cellColors[0]];
+            
+            cellIds.forEach((id, index) => {
+                const cell = document.getElementById(`cell${id}`);
+                cell.style.background = rotated[index];
+                cell.classList.add('winning-animation');
+                setTimeout(() => cell.classList.remove('winning-animation'), 300);
+            });
+        }
+        
+        function rotateColumn(cellIds, direction) {
+            const cellColors = cellIds.map(id => document.getElementById(`cell${id}`).style.background);
+            const rotated = direction === "up"
+                ? [cellColors[1], cellColors[2], cellColors[0]]
+                : [cellColors[2], cellColors[0], cellColors[1]];
+            
+            cellIds.forEach((id, index) => {
+                const cell = document.getElementById(`cell${id}`);
+                cell.style.background = rotated[index];
+                cell.classList.add('winning-animation');
+                setTimeout(() => cell.classList.remove('winning-animation'), 300);
+            });
+        }
+        
+        
+        function rotateRight(row) {
+            const rowCells = {
+                1: [1, 2, 3],
+                2: [4, 5, 6],
+                3: [7, 8, 9]
+            };
+            rotateRow(rowCells[row], "right");
+        }
+        
+        function rotateLeft(row) {
+            const rowCells = {
+                1: [1, 2, 3],
+                2: [4, 5, 6],
+                3: [7, 8, 9]
+            };
+            rotateRow(rowCells[row], "left");
+        }
+        
+        
+        function rotateUp(col) {
+            const colCells = {
+                1: [1, 4, 7],
+                2: [2, 5, 8],
+                3: [3, 6, 9]
+            };
+            rotateColumn(colCells[col], "up");
+        }
+        
+        function rotateDown(col) {
+            const colCells = {
+                1: [1, 4, 7],
+                2: [2, 5, 8],
+                3: [3, 6, 9]
+            };
+            rotateColumn(colCells[col], "down");
+        }
+        
+        function checkWin() {
+            setTimeout(() => {
+                const getColor = (id) => document.getElementById(`cell${id}`).style.background;
+                
+                
+                const rowsMatch = (
+                    getColor(1) === getColor(2) && getColor(1) === getColor(3) &&
+                    getColor(4) === getColor(5) && getColor(4) === getColor(6) &&
+                    getColor(7) === getColor(8) && getColor(7) === getColor(9)
+                );
+                
+                
+                const colsMatch = (
+                    getColor(1) === getColor(4) && getColor(1) === getColor(7) &&
+                    getColor(2) === getColor(5) && getColor(2) === getColor(8) &&
+                    getColor(3) === getColor(6) && getColor(3) === getColor(9)
+                );
+                
+                if (rowsMatch || colsMatch) {
+                    document.getElementById('winMessage').style.display = 'block';
+                    
+                    
+                    for (let i = 1; i <= 9; i++) {
+                        document.getElementById(`cell${i}`).classList.add('winning-animation');
+                    }
+                }
+            }, 100);
+        }
+    </script>
+</body>
+</html>
