@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Premium Online Games</title>
+    <link rel="stylesheet" href="../portal-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">🎮 GameHub</h1>
+            <p class="tagline">Premium Online Games Collection</p>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="games-section">
+                <h2 class="section-title">Choose Your Adventure</h2>
+                <div class="games-grid" id="gamesGrid">
+                    <!-- Games will be populated by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 GameHub. All games are free to play!</p>
+        </div>
+    </footer>
+
+    <script>
+        const games = [
+            
+            {
+                title: "Memory Game",
+                file: "memory.html",
+                description: "Test your memory with this classic card matching game",
+                color: "#4ECDC4"
+            },
+            {
+                title: "Rock Paper Scissors",
+                file: "rock-paper-scissors.html",
+                description: "Classic hand game against the computer",
+                color: "#45B7D1"
+            },
+            {
+                title: "Tic-Tac-Toe",
+                file: "tic-tac-toe.html",
+                description: "Strategic Tic-Tac-Toe with tactical mode",
+                color: "#96CEB4"
+            },
+            
+            
+            {
+                title: "Quiz Game",
+                file: "quiz.html",
+                description: "Test your knowledge with fun trivia questions",
+                color: "#A29BFE"
+            },
+           
+            {
+                title: "CPS Test",
+                file: "cps-test.html",
+                description: "Test your clicking speed - how fast can you click?",
+                color: "#FF7675"
+            },
+            {
+                title: "2D Rubik's Cube",
+                file: "rubiks-2d.html",
+                description: "Solve the colorful 2D Rubik's Cube puzzle",
+                color: "#FD79A8"
+            },
+            
+           
+        ];
+
+        function createGameCard(game) {
+            return `
+                <div class="game-card" style="--accent-color: ${game.color}">
+                    <div class="game-thumbnail">
+                        <div class="game-icon">🎮</div>
+                    </div>
+                    <div class="game-info">
+                        <h3 class="game-title">${game.title}</h3>
+                        <p class="game-description">${game.description}</p>
+                        <button class="play-btn" onclick="playGame('${game.file}')">
+                            <span class="play-icon">▶</span>
+                            Play Now
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function playGame(gameFile) {
+            window.open(`games/${gameFile}`, '_blank');
+        }
+
+        function initializeGames() {
+            const gamesGrid = document.getElementById('gamesGrid');
+            gamesGrid.innerHTML = games.map(createGameCard).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeGames);
+    </script>
+</body>
+</html>
