@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Igre - Zabavni Portal za Igre</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="logo.png" alt="Online Igre Logo" class="logo">
+                <div class="brand-text">
+                    <h1>Online Igre</h1>
+                    <p class="tagline">Tvoj portal za zabavu</p>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#home">Početna</a></li>
+                    <li><a href="#games">Igre</a></li>
+                    <li><a href="#about">O nama</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="hero-section">
+            <h2>Dobrodošli na portal za igre!</h2>
+            <p>Izaberi igru i zabavi se sa našom kolekcijom besplatnih online igara.</p>
+        </div>
+    </header>
+
+    <main id="games">
+        <div class="games-section">
+            <h2>Naše Igre</h2>
+            <div class="game-list">
+                <div class="game-card" id="memory-game">
+                    <div class="game-screenshot">
+                        <img src="https://images.pexels.com/photos/278918/pexels-photo-278918.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Memory Game Screenshot">
+                    </div>
+                    <div class="game-info">
+                        <h3>Memory Igra</h3>
+                        <p>Testiraj svoju memoriju pronalaženjem parova karata</p>
+                        <button class="play-btn" onclick="window.location.href='memory.html'">
+                            <i class="fas fa-play"></i> Igraj
+                        </button>
+                    </div>
+                </div>
+
+                <div class="game-card" id="rock_paper_scissors">
+                    <div class="game-screenshot">
+                        <img src="https://images.pexels.com/photos/8111357/pexels-photo-8111357.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Rock Paper Scissors Screenshot">
+                    </div>
+                    <div class="game-info">
+                        <h3>Kamen Škare Papir</h3>
+                        <p>Klasična igra protiv računara</p>
+                        <button class="play-btn" onclick="window.location.href='rock_paper_scissors.html'">
+                            <i class="fas fa-play"></i> Igraj
+                        </button>
+                    </div>
+                </div>
+
+                <div class="game-card" id="css-game">
+                    <div class="game-screenshot">
+                        <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&w=400" alt="CSS Game Screenshot">
+                    </div>
+                    <div class="game-info">
+                        <h3>CSS Puzzle</h3>
+                        <p>Reši puzzle koristeći logiku i strategiju</p>
+                        <button class="play-btn" onclick="window.location.href='css-game.html'">
+                            <i class="fas fa-play"></i> Igraj
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Online Igre Logo" class="footer-logo-img">
+                    <h3>Online Igre</h3>
+                </div>
+                <p>Najbolji portal za besplatne online igre. Zabavi se sa našom kolekcijom igara!</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Kontakt</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@onlineigre.com">info@onlineigre.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+385123456789">+385 12 345 6789</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Zagreb, Hrvatska</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Brze Veze</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Početna</a></li>
+                    <li><a href="#games">Igre</a></li>
+                    <li><a href="#about">O nama</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Prati nas</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>&copy; 2025 Online Igre. Sva prava zadržana.</p>
+                <p>Dizajn i razvoj: <strong>Online Igre Tim</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
