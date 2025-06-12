@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Game</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
             margin: 0;
-            font-family: 'Arial', sans-serif; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
             background: linear-gradient(135deg, #f7f7f7, #e2e2e2); 
         }
 
@@ -114,26 +115,47 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            background-color: #f44336;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
             color: white;
             padding: 12px 20px;
-            font-size: 18px;
+            font-size: 16px;
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
         }
 
         .back-btn:hover {
-            background-color: #d32f2f;
+            background: linear-gradient(135deg, #45a049, #3d8b40);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .game-title {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00796b;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body onload="input()">
     <!-- Povratak na početnu stranicu -->
-    <button class="back-btn" onclick="window.location.href='index.html'">Povratak na početnu stranicu</button>
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-arrow-left"></i>
+        Povratak na početnu
+    </a>
 
-    <h1>CSS Game</h1>
+    <h1 class="game-title">CSS Puzzle</h1>
+    
     <div class="center">
         <div class="box">
             <div class="container" onclick="pobjeda()">
@@ -177,7 +199,21 @@
         document.getElementById("8").style.background = "red";
         document.getElementById("9").style.background = "red";
       }
-      // (Ostali kod igre ostaje isti)
+      
+      // Placeholder functions for game logic
+      function up1() { console.log("Up 1 clicked"); }
+      function up2() { console.log("Up 2 clicked"); }
+      function up3() { console.log("Up 3 clicked"); }
+      function down1() { console.log("Down 1 clicked"); }
+      function down2() { console.log("Down 2 clicked"); }
+      function down3() { console.log("Down 3 clicked"); }
+      function left1() { console.log("Left 1 clicked"); }
+      function left2() { console.log("Left 2 clicked"); }
+      function left3() { console.log("Left 3 clicked"); }
+      function right1() { console.log("Right 1 clicked"); }
+      function right2() { console.log("Right 2 clicked"); }
+      function right3() { console.log("Right 3 clicked"); }
+      function pobjeda() { console.log("Victory check"); }
     </script>
 </body>
 </html>
